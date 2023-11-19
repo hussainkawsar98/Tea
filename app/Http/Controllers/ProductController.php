@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Session;
-use App\Models\{Productname, Category, Subcategory};
+use App\Models\{Productname, Product, Quantity, Category, Purchase};
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -16,8 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-
-        $products = Product::orderBy('created_at', 'DESC')->paginate(15);
+        $products = Product::orderBy('created_at', 'DESC')->paginate(10);
         return view('admin.product.index', compact('products'));
     }
 
@@ -28,9 +27,9 @@ class ProductController extends Controller
      */
     public function create()
     {   
-        $categories = Category::All();
-        $subcategories = Subcategory::All();
-        return view('admin.product.create', compact('categories','subcategories'));
+        $productnames = Productname::All();
+        $quantities = Quantity::All();
+        return view('admin.product.create', compact('productnames', 'quantities'));
     }
 
     /**
@@ -41,19 +40,33 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $products = Product::all();
         $validated = $request->validate([
-            'name' => 'required|unique:productnames',
-            'category_id' => 'required',
+            'productname_id' => 'required',
+            'quantity_id' => 'required',
+            'quantity' => 'required',
+            'price' => 'required',
+        ]);
+        $product = Product::insert([
+            'productname_id' => $request->productname_id,
+            'quantity_id' => $request->quantity_id,
+            'quantity' => $request->quantity,
+            'price' => $request->price*$request->quantity,
+            'add_cost' => $request->add_cost,
+            'tax' => (($request->tax*$request->price)/100)*$request->quantity,
+            'vat' => (($request->vat*$request->price)/100)*$request->quantity,
+        ]);
+        $product = Purchase::insert([
+            'productname_id' => $request->productname_id,
+            'quantity_id' => $request->quantity_id,
+            'quantity' => $request->quantity,
+            'price' => $request->price*$request->quantity,
+            'add_cost' => $request->add_cost,
+            'tax' => (($request->tax*$request->price)/100)*$request->quantity,
+            'vat' => (($request->vat*$request->price)/100)*$request->quantity,
         ]);
 
-        $productname = Productname::insert([
-            'name' => $request->name,
-            'category_id' => $request->category_id,
-            'subcategory_id' => $request->subcategory_id,
-            'slug' => Str::of($request->name)->slug('-'),
-        ]);
-
-        Session::flash('success', 'Product Name Created Successfully!');
+        Session::flash('success', 'Product Created Successfully!');
         return redirect()->back();
     }
 
@@ -76,9 +89,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $categories = Category::all();
-        $subcategories = subcategory::all();
-        return view('admin.product.edit', compact('product', 'categories', 'subcategories'));
+        $productnames = Productname::All();
+        $quantities = Quantity::All();
+        return view('admin.product.edit', compact('productnames', 'quantities', 'product'));
     }
 
     /**
@@ -90,13 +103,28 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $product->name = $request->name;
-        $product->slug = Str::of($request->name)->slug('-');
-        $product->category_id = $request->category_id;
-        $product->subcategory_id = $request->subcategory_id;
+        $product->productname_id = $request->productname_id;
+        $product->quantity_id = $request->quantity_id;
+        $product->quantity = $product->quantity + $request->quantity;
+        $product->price = $request->price*$request->quantity;
+        $product->add_cost = $request->add_cost;
+        $tax = (($request->tax*$request->price)/100)*$request->quantity;
+        $product->tax = $product->tax + $tax;
+        $vat = (($request->vat*$request->price)/100)*$request->quantity;
+        $product->vat = $product->vat + $vat;
         $product->save();
 
-        Session::flash('success', 'Produtc Name Update Successfully!');
+        $product = Purchase::insert([
+            'productname_id' => $request->productname_id,
+            'quantity_id' => $request->quantity_id,
+            'quantity' => $request->quantity,
+            'price' => $request->price*$request->quantity,
+            'add_cost' => $request->add_cost,
+            'tax' => (($request->tax*$request->price)/100)*$request->quantity,
+            'vat' => (($request->vat*$request->price)/100)*$request->quantity,
+        ]);
+
+        Session::flash('success', 'Product Update Successfully!');
         return redirect()->route('product.index');
     }
 

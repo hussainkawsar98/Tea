@@ -88,7 +88,6 @@
                             </a>
                         </li>
 
-<<<<<<< HEAD
                         <!-- Start DropDown Menu -->
                         <li class="nav-item">
                             <a href="#" class="nav-link {{Request::routeIs('product.index') || Request::routeIs('product.create') ? 'active' : '' }}">
@@ -114,39 +113,9 @@
                             </ul>
                         </li>
                         <!-- End Dropdown Menu -->
-
-                        <!-- Start DropDown Menu -->
-                        <li class="nav-item">
-=======
-                        <!-- Start DropDown Menu -->
-                        <li class="nav-item">
-                            <a href="#" class="nav-link {{Request::routeIs('post.index') || Request::routeIs('post.create') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-file-alt"></i>
-                                <p>
-                                    Posts
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{route('post.index')}}" class="nav-link {{Request::routeIs('post.index') ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Posts</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{route('post.create')}}" class="nav-link {{Request::routeIs('post.create') ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Add Post</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <!-- End DropDown Menu -->
                         
                         <!-- Start DropDown Menu -->
                         <li class="nav-item">
->>>>>>> 66f0c0befa63d52a12a41b35c413009750a5af89
                             <a href="#" class="nav-link {{Request::routeIs('category.index') || Request::routeIs('category.create') ? 'active' : '' }}">
                                 <i class="nav-icon far fa-file-alt"></i>
                                 <p>
@@ -156,24 +125,14 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-<<<<<<< HEAD
                                     <a href="{{route('category.index')}}" class="nav-link {{ Request::routeIs('category.create') ? 'active' : '' }}">
                                     <i class="far fa-circle nav-icon pe-2 pr-2"></i>
                                         <p> Categories</p>
-=======
-                                    <a href="{{route('category.index')}}" class="nav-link {{ Request::routeIs('category.index') ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Categories</p>
->>>>>>> 66f0c0befa63d52a12a41b35c413009750a5af89
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{route('category.create')}}" class="nav-link {{ Request::routeIs('category.create') ? 'active' : '' }}">
-<<<<<<< HEAD
                                         <i class="far fa-circle nav-icon pe-2 pr-2"></i>
-=======
-                                        <i class="far fa-circle nav-icon"></i>
->>>>>>> 66f0c0befa63d52a12a41b35c413009750a5af89
                                         <p>Add Category</p>
                                     </a>
                                 </li>
@@ -183,13 +142,8 @@
 
                         <!-- Start Dropdown Menu -->
                         <li class="nav-item">
-<<<<<<< HEAD
-                            <a href="#" class="nav-link {{Request::routeIs('subcategory.index') || Request::routeIs('subcategory.create') ? 'active' : '' }}">
-                                <i class="nav-icon far fa-file-alt"></i>
-=======
                             <a href="#" class="nav-link {{Request::routeIs('tag.index') || Request::routeIs('tag.create') ? 'active' : '' }}">
                                 <i class="fas fa-tags nav-icon"></i>
->>>>>>> 66f0c0befa63d52a12a41b35c413009750a5af89
                                 <p>
                                     Sub Category
                                     <i class="right fas fa-angle-left"></i>
@@ -197,7 +151,6 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-<<<<<<< HEAD
                                     <a href="{{route('subcategory.index')}}" class="nav-link {{ Request::routeIs('subcategory.create') ? 'active' : '' }}">
                                     <i class="far fa-circle nav-icon pe-2 pr-2"></i>
                                         <p> Sub Categories</p>
@@ -207,26 +160,14 @@
                                     <a href="{{route('subcategory.create')}}" class="nav-link {{ Request::routeIs('subcategory.create') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon pe-2 pr-2"></i>
                                         <p>Add Sub Category</p>
-=======
-                                    <a href="{{route('tag.index')}}" class="nav-link {{ Request::routeIs('tag.index') ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Tags</p>
                                     </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{route('tag.create')}}" class="nav-link {{ Request::routeIs('tag.create') ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Add Tag</p>
->>>>>>> 66f0c0befa63d52a12a41b35c413009750a5af89
-                                    </a>
-                                </li>
+                                </li> 
                             </ul>
                         </li>
 
                         <!-- End DropDown Menu -->
 
                         <li class="nav-item">
-<<<<<<< HEAD
                         <a href="#" class="nav-link {{Request::routeIs('product-name.index') || Request::routeIs('product-name.create') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-file-alt"></i>
                                 <p>
@@ -278,8 +219,6 @@
                         <!-- End DropDown Menu -->
 
                         <li class="nav-item">
-=======
->>>>>>> 66f0c0befa63d52a12a41b35c413009750a5af89
                             <a href="{{route('message.index')}}" class="nav-link {{ Request::routeIs('message.index') ? 'active' : '' }}">
                                 <i class="nav-icon far fa-envelope"></i>
                                 <p>

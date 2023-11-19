@@ -14,7 +14,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Home</a></li>
-                        <!-- <li class="breadcrumb-item"><a href="">Product Name List</a></li> -->
+                       <li class="breadcrumb-item"><a href="{{route('product.index')}}">Product List</a></li>
                         <li class="breadcrumb-item active">Add Product</li>
                         </ol>
                     </div><!-- /.col -->
@@ -43,29 +43,51 @@
                                     <form action="{{route('product.store')}}" method="POST">
                                         @csrf
                                         <div class="card-body">
-                                            <div class="form-group">
-                                                <label>Product</label>
-                                                <input type="text" class="form-control" id="product-name" placeholder="Product" name="name">
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <label>Product Name</label>
+                                                    <select name="productname_id" id="" class="form-control selectpicker" data-live-search="true">
+                                                        <option selected disabled>Choose Product Name</option>
+                                                        @foreach($productnames as $productname)
+                                                        <option value="{{$productname->id}}">{{$productname->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label>Quantity Type</label>
+                                                    <select name="quantity_id" id="" class="form-control selectpicker" data-live-search="true">
+                                                        <option selected disabled>Choose Quantity Type</option>
+                                                        @foreach($quantities as $quantity)
+                                                        <option value="{{$quantity->id}}">{{$quantity->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
                                             </div>
-                                            <div class="form-group">
-                                            <label>Parent</label>
-                                                <select name="category_id" id="" class="form-control selectpicker" data-live-search="true">
-                                                    <option selected disabled>Choose Category</option>
-                                                    @foreach($categories as $category)
-                                                    <option value="{{$category->id}}">{{$category->name}}</option>
-                                                    @endforeach
-                                                </select>
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <label>Quantity</label>
+                                                    <input type="text" inputmode="decimal" class="form-control" placeholder="Quantity" name="quantity">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label>Price Per Quanity</label>
+                                                    <input type="text" inputmode="decimal" class="form-control" placeholder="Price Per Quantity" name="price">
+                                                </div>
                                             </div>
-                                            <div class="form-group">
-                                            <label>Sub Category</label>
-                                                <select name="subcategory_id" id="" class="form-control selectpicker" data-live-search="true">
-                                                    <option value="0" selected disabled>Select Sub Category</option>
-                                                    @foreach($subcategories as $subcategory)
-                                                    <option value="{{$subcategory->id}}">{{$subcategory->subcategory_name}}</option>
-                                                    @endforeach
-                                                </select>
+                                            <div class="row">
+                                                <div class="form-group col-md-4">
+                                                    <label>Additional Cost</label>
+                                                    <input type="text" inputmode="decimal" class="form-control" placeholder="Quantity" name="add_cost">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Price Per Quanity</label>
+                                                    <input type="text" inputmode="decimal" class="form-control" placeholder="Price Per Quantity" name="tax">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Price Per Quanity</label>
+                                                    <input type="text" inputmode="decimal" class="form-control" placeholder="Price Per Quantity" name="vat">
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">Save Product</button>
                                             </div>
-                                            <button type="submit" class="btn btn-primary">Save Product Name</button>
                                         </div>
                                     </form>
                                 </div>

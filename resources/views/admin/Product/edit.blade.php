@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Edit Product Name | Develop by Muktar Hussain')
+@section('title', 'Edit Product | Develop by Muktar Hussain')
 
 @section('content')
     <!-- Content Wrapper. Contains page content -->
@@ -9,13 +9,13 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Update Product Name</h1>
+                        <h1 class="m-0">Update Product</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('product-name.index')}}">Product Name List</a></li>
-                        <li class="breadcrumb-item active">Update Product Name</li>
+                        <li class="breadcrumb-item"><a href="{{route('product.index')}}">Product List</a></li>
+                        <li class="breadcrumb-item active">Update Product</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -32,52 +32,69 @@
                         <div class="card">
                             <div class="card-header">
                                 <div class="d-flex justify-content-between">
-                                    <h3 class="card-title pt-2">Update Product Name</h3>
-                                    <a href="{{route('product-name.index')}}" class="btn btn-primary">Go Back Product Name List</a>
+                                    <h3 class="card-title pt-2">Update Product</h3>
+                                    <a href="{{route('product.index')}}" class="btn btn-primary">Go Back Product List</a>
                                 </div>
                             </div>
                             <div class="card-body p-0">
                                 <div class="card-primary">
                                     <!-- Errors List Show -->
                                     @include('layouts.errors')
-                                   <form action="{{route('product-name.update', $product_name->id)}}" method="POST">
+                                   <form action="{{route('product.update', $product->id)}}" method="POST">
                                         @csrf
                                         @method('PUT')
                                         <div class="card-body">
-                                            <div class="form-group">
-                                                <label>Product Name</label>
-                                                <input type="text" class="form-control" id="product-name" placeholder="Product Name" name="name" value="{{$product_name->name}}">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <label>Product</label>
+                                                    <select name="productname_id" id="" class="form-control selectpicker" data-live-search="false">
+                                                    @foreach($productnames as $productname)
+                                                        <option
+                                                    {{$productname->id == $product->productname_id ? 'selected' : ''}}
+                                                    value="{{$productname->id}}">{{$productname->name}}</option>
+                                                     @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                <label>Quantity Type</label>
+                                                    <select name="quantity_id" id="" class="form-control selectpicker" data-live-search="false">
+                                                    @foreach($quantities as $quantity)
+                                                        <option
+                                                    {{$quantity->id == $product->quantity_id ? 'selected' : ''}}
+                                                    value="{{$quantity->id}}">{{$quantity->name}}</option>
+                                                    @endforeach
+                                                    </select>
+                                                </div>
                                             </div>
-                                        
-                                            <div class="form-group">
-                                            <label>Category</label>
-                                                <select name="category_id" id="" class="form-control selectpicker" data-live-search="true">
-                                                <option selected disabled>Change Category</option>
-                                                @foreach($categories as $category)
-                                                <option
-                                                    {{$category->id == $product_name->category_id ? 'selected' : ''}}
-                                                    value="{{$category->id}}">{{$category->name}}</option>
-                                                @endforeach
-                                                </select>
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <label>Quantity</label>
+                                                    <input type="text" inputmode="decimal" class="form-control" placeholder="Quantity" name="quantity">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label>Price Per Quanity</label>
+                                                    <input type="text" inputmode="decimal" class="form-control" placeholder="Price Per Quantity" name="price">
+                                                </div>
                                             </div>
-
-                                            <div class="form-group">
-                                            <label>Sub Category</label>
-                                                <select name="subcategory_id" id="" class="form-control selectpicker" data-live-search="true">
-                                                <option selected disabled>Change Sub Category</option>
-                                                @foreach($subcategories as $subcategory)
-                                                <option
-                                                    {{$subcategory->id == $product_name->subcategory_id ? 'selected' : ''}}
-                                                    value="{{$subcategory->id}}">{{$subcategory->subcategory_name}}</option>
-                                                @endforeach
-                                                </select>
+                                            <div class="row">
+                                                <div class="form-group col-md-4">
+                                                    <label>Additional Cost</label>
+                                                    <input type="text" inputmode="decimal" class="form-control" placeholder="Quantity" name="add_cost">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Tax</label>
+                                                    <input type="text" inputmode="decimal" class="form-control" placeholder="Tax" name="tax">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Vat</label>
+                                                    <input type="text" inputmode="decimal" class="form-control" placeholder="vat" name="vat">
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">Update Product</button>
                                             </div>
-                                            <button type="submit" class="btn btn-primary">Update Product Name</button>
                                         </div>
                                     </form>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>

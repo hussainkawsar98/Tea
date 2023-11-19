@@ -77,7 +77,7 @@ class ProductNameController extends Controller
     public function edit(Productname $product_name)
     {
         $categories = Category::all();
-        $subcategories = subcategory::all();
+        $subcategories = Subcategory::all();
         return view('admin.product-name.edit', compact('product_name', 'categories', 'subcategories'));
     }
 

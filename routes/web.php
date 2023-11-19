@@ -1,13 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
 use App\Http\Controllers\{CategoryController,SubcategoryController,TagController,PostController,FrontendController,QuantityController,ProductController};
 use App\Http\Controllers\{ContactController,UserController,SettingController,CommentController,BackendController,ProductNameController};
-=======
-use App\Http\Controllers\{CategoryController,TagController,PostController,FrontendController};
-use App\Http\Controllers\{ContactController,UserController,SettingController,CommentController,BackendController};
->>>>>>> 66f0c0befa63d52a12a41b35c413009750a5af89
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes

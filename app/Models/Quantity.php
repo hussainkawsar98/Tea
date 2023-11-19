@@ -16,13 +16,14 @@ class Quantity extends Model
         'name',
     ];
 
-    //__Join with Category__//
-    public function Category(){
-        return $this->belongsTo('App\Models\Category', 'category_id', 'id'); 
+    //__Join with Product__//
+    public function Product(){
+        return $this->hasMany('App\Models\Product', 'quantity_id', 'id'); 
     }
-     //__Join with Subcategory__//
-    public function Subcategory(){
-        return $this->belongsTo('App\Models\Subcategory', 'subcategory_id', 'id'); 
+
+    //__Join with Purchase__//
+    public function Purchase(){
+        return $this->hasMany('App\Models\Purchase', 'purchase_id', 'id'); 
     }
 
 }

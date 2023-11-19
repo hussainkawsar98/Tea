@@ -30,13 +30,13 @@
 
       <div class="small-box bg-info">
       <div class="inner">
-      <h3>{{$post->count()}}</h3>
-      <p>Total Post</p>
+      <h3>{{$subcategory->count()}}</h3>
+      <p>Total Subcategory</p>
       </div>
       <div class="icon">
       <i class="nav-icon fas fa-tachometer-alt"></i>
       </div>
-      <a href="{{route('post.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+      <a href="{{route('subcategory.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
       </div>
       </div>
 
@@ -58,13 +58,13 @@
 
       <div class="small-box bg-warning">
       <div class="inner">
-      <h3>{{$tag->count()}}</h3>
-      <p>All Tag</p>
+      <h3>{{$productname->count()}}</h3>
+      <p>All Productname</p>
       </div>
       <div class="icon">
       <i class="fas fa-tags nav-icon"></i>
       </div>
-      <a href="{{route('tag.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+      <!-- <a href="{{route('productname.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
       </div>
       </div>
 

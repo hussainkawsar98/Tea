@@ -27,7 +27,7 @@
     <div class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-12 col-lg-12 pb-4">
+          <div class="col-md-9 col-lg-8 pb-4">
           <div class="card mb-4">
               <div class="card-header">
                 <div class="d-flex justify-content-between">
