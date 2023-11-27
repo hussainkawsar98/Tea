@@ -33,7 +33,6 @@ class Productname extends Model
         return $this->hasMany('App\Models\Product', 'productname_id', 'id'); 
     }
 
-
     //__Join with Purchase__//
     public function Purchase(){
         return $this->hasMany('App\Models\Purchase', 'purchase_id', 'id'); 

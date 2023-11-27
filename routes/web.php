@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{CategoryController,SubcategoryController,TagController,PostController,FrontendController,QuantityController,ProductController};
-use App\Http\Controllers\{ContactController,UserController,SettingController,CommentController,BackendController,ProductNameController};
+use App\Http\Controllers\{CategoryController,SubcategoryController,TagController,PostController,FrontendController,QuantityController,ProductController,PurchaseController};
+use App\Http\Controllers\{ContactController,UserController,SettingController,CommentController,BackendController,ProductNameController,SaleController};
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +42,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::resource('/product-name', ProductNameController::class);
     Route::resource('/quantity', QuantityController::class);
     Route::resource('/product', ProductController::class);
+    Route::resource('/purchase', PurchaseController::class);
+    // Route::get('/purchase/search', [PurchaseController::class, 'search'])->name('purchase.search');
+    // Route::get('/purchase/filter', [PurchaseController::class, 'filter'])->name('purchase.filter');
+    Route::resource('/sale', SaleController::class);
     Route::resource('/tag', TagController::class);
     Route::resource('/user', UserController::class);
     Route::get('/user/profile/{slug}', [UserController::class, 'profile'])->name('user.profile');
@@ -61,12 +65,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
 });
 
-// Route::get('/category', function () {
-//     return view('category');
-
+// Route::get('/admin/purchase/filter', function () {
+//     return view('admin.purchase.filter');
+// });
 //Laravel debuger use for speed
 //{{route('frontend.post', ['slug' => $recentPost->slug])}}
-
+// Route::get('/purchase/search', function(){
+//     return view('admin.purchase.search');
+// });
 
 Route::get('/test', function(){
     $id = 60;

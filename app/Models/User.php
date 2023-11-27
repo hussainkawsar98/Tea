@@ -50,4 +50,7 @@ class User extends Authenticatable
     public function post(){
         return $this->hasMany('App\Models\Post', 'user_id');
     }
+    public function sale(){
+        return $this->hasMany('App\Models\Sale', 'user_id', 'id');
+    }
 }

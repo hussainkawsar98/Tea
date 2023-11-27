@@ -66,25 +66,25 @@
                                             <div class="row">
                                                 <div class="form-group col-md-6">
                                                     <label>Quantity</label>
-                                                    <input type="text" inputmode="decimal" class="form-control" placeholder="Quantity" name="quantity">
+                                                    <input type="text" inputmode="decimal" class="form-control" name="quantity">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label>Price Per Quanity</label>
-                                                    <input type="text" inputmode="decimal" class="form-control" placeholder="Price Per Quantity" name="price">
+                                                    <input type="text" inputmode="decimal" class="form-control" name="price">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-md-4">
                                                     <label>Additional Cost</label>
-                                                    <input type="text" inputmode="decimal" class="form-control" placeholder="Quantity" name="add_cost">
+                                                    <input type="text" inputmode="decimal" class="form-control" name="add_cost">
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label>Price Per Quanity</label>
-                                                    <input type="text" inputmode="decimal" class="form-control" placeholder="Price Per Quantity" name="tax">
+                                                    <label>Tax</label>
+                                                    <input type="text" inputmode="decimal" class="form-control" name="tax">
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label>Price Per Quanity</label>
-                                                    <input type="text" inputmode="decimal" class="form-control" placeholder="Price Per Quantity" name="vat">
+                                                    <label>Vat</label>
+                                                    <input type="text" inputmode="decimal" class="form-control" name="vat">
                                                 </div>
                                                 <button type="submit" class="btn btn-primary">Save Product</button>
                                             </div>

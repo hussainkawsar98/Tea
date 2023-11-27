@@ -67,7 +67,7 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="{{asset(Auth::user()->profile)}}" class="img-circle elevation-2"
+                        <img src="{{asset(Auth::user()->profile)}}" class="rounded"
                             alt="User Image">
                     </div>
                     <div class="info">
@@ -114,6 +114,32 @@
                         </li>
                         <!-- End Dropdown Menu -->
                         
+                        <!-- Start DropDown Menu -->
+                        <li class="nav-item">
+                            <a href="#" class="nav-link {{Request::routeIs('category.index') || Request::routeIs('category.create') ? 'active' : '' }}">
+                                <i class="nav-icon far fa-file-alt"></i>
+                                <p>
+                                    Sales
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('category.index')}}" class="nav-link {{ Request::routeIs('category.create') ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon pe-2 pr-2"></i>
+                                        <p> Sales</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('category.create')}}" class="nav-link {{ Request::routeIs('category.create') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon pe-2 pr-2"></i>
+                                        <p>Sale Single</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- End Dropdown Menu -->
+
                         <!-- Start DropDown Menu -->
                         <li class="nav-item">
                             <a href="#" class="nav-link {{Request::routeIs('category.index') || Request::routeIs('category.create') ? 'active' : '' }}">
@@ -218,6 +244,17 @@
                         </li>
                         <!-- End DropDown Menu -->
 
+                        <!-- Start DropDown Menu -->
+                        <li class="nav-item">
+                            <a href="{{route('purchase.index')}}" class="nav-link {{Request::routeIs('purchase.index') ? 'active' : '' }}">
+                                <i class="nav-icon far fa-file-alt"></i>
+                                <p>
+                                    Purchase
+                                </p>
+                            </a>
+                        </li>
+                        <!-- End Dropdown Menu -->
+
                         <li class="nav-item">
                             <a href="{{route('message.index')}}" class="nav-link {{ Request::routeIs('message.index') ? 'active' : '' }}">
                                 <i class="nav-icon far fa-envelope"></i>
@@ -296,6 +333,10 @@
     <script src="{{asset('public/admin')}}/plugins/bs-custom-file-input.min.js"></script>
     <!-- Bootstrap Select JS -->
     <script src="{{asset('public/admin')}}/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+    <!-- Custom JS -->
+    <script src="{{asset('public/admin')}}/dist/js/custom.js"></script>
+    <!-- Momenty JS -->
+    <script src="{{asset('public/admin')}}/dist/js/moment.min.js"></script>
     <!-- AdminLTE App -->
     <!-- SummerNote Script -->
     @yield('summernote-script')

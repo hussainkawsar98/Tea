@@ -2,11 +2,10 @@
 
 namespace App\Models;
 
-use App\Models\Productname;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Sale extends Model
 {
     use HasFactory;
 
@@ -29,8 +28,13 @@ class Product extends Model
         return $this->belongsTo('App\Models\Quantity', 'quantity_id', 'id'); 
     }
 
-    //__Join with Product for Sale__//
-    public function ProductS(){
-        return $this->hasMany('App\Models\sale', 'product_id', 'id'); 
+    //__Join with User__//
+    public function User(){
+        return $this->belongsTo('App\Models\User', 'user_id', 'id'); 
+    }
+
+    //__Join with Product__//
+    public function Sale(){
+        return $this->belongsTo('App\Models\Product', 'product_id', 'id'); 
     }
 }

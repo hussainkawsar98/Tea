@@ -32,7 +32,39 @@
               <div class="card-header">
                 <div class="d-flex justify-content-between">
                     <h3 class="card-title pt-2">Category List</h3>
-                    <a href="{{route('category.create')}}" class="btn btn-primary">Add Category</a>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                      Add Category
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Add Category</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <!-- Errors List Show -->
+                            @include('layouts.errors')
+                            <form action="{{route('category.store')}}" method="POST">
+                                @csrf
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Category Name</label>
+                                        <input type="text" class="form-control" id="name"
+                                            placeholder="Enter Category" name="name">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Save Category</button>
+                                </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                </div>
               </div>
               <!-- /.card-header -->

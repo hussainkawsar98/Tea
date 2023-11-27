@@ -79,3 +79,40 @@ a, h1, h2, h3, h4, h5, h6, p {
     background-color: #007bff8c!important;
     color: #ffffff!important;
 }
+ul.filter-group {
+    margin: 0px!important;
+    list-style: none;
+    float: right;
+}
+.filter-group li {
+    display: inline-block;
+}
+.filter-group li > a {
+    margin-top: 0px;
+}
+
+input {
+    position: relative;
+    width: 150px; height: 20px;
+    color: white;
+}
+
+input:before {
+    position: absolute;
+    top: 3px; left: 3px;
+    content: attr(data-date);
+    display: inline-block;
+    color: black;
+}
+
+input::-webkit-datetime-edit, input::-webkit-inner-spin-button, input::-webkit-clear-button {
+    display: none;
+}
+
+input::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 3px;
+    right: 0;
+    color: black;
+    opacity: 1;
+}

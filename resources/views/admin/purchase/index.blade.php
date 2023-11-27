@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'All Product Names | Develop by Muktar Hussain')
+@section('title', 'Product Purchase List | Develop by Muktar Hussain')
 
 @section('content')
     <!-- Content Wrapper. Contains page content -->
@@ -9,12 +9,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Product</h1>
+                        <h1 class="m-0">Purchase List</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Home</a></li>
-                        <li class="breadcrumb-item active">Product List</li>
+                        <li class="breadcrumb-item active">Purchase List</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -30,19 +30,26 @@
           <div class="col-md-12 col-lg-12 pb-4">
           <div class="card mb-4">
               <div class="card-header">
-              <div class="row justify-content-between">
+                <div class="row justify-content-between">
                   <div class="name col-md-3">
                     <h3 class="card-title pt-2">Purchase List</h3>
                   </div>
                   <div class="button col-md-9">
                     <ul class="filter-group d-flex">
+                      <li class="mr-2">
+                        <!-- <form action="#" method="GET" class="d-flex">
+                          <button class="btn btn-primary mr-1">Filter</button>
+                          <input type="text" id="dataInput" class="form-control me-2 mr-1" placeholder="01 Jan 2023">
+                        </form> -->
+                      </li>
                       <li>
                         <form class="d-flex"  action="#" method="GET">
-                            <input class="form-control me-2 mr-1" id="searchInput" type="search" placeholder="Search Product.." name="search">
+                          <button class="btn btn-primary mr-1">Filter</button>
+                            <input class="form-control me-2 mr-1" id="searchInput" type="search" placeholder="Product or Date.." name="search">
                         </form>
                       </li>
                       <li>
-                        <a href="{{route('product.create')}}" class="btn btn-primary ml-2">Add Purchase</a>
+                        <!-- <a href="{{route('product.create')}}" class="btn btn-primary ml-2">Add Purchase</a> -->
                       </li>
                     </ul>
                   </div>  
@@ -53,41 +60,46 @@
                 <table class="table table-striped" id="myTable">
                   <thead>
                     <tr>
+                      <th>Serial</th>
                       <th>Name</th>
                       <th>Category</th>
                       <th>Total Quantity</th>
                       <th>Total Price</th>
-                      <th>Average Price</th>
-                      <th>Action</th>
+                      <th>Per Quantity</th>
+                      <th>Entry Date</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @if($products->count())
-                    @foreach($products as $product)
+                    @if($purchases->count())
+                    @foreach($purchases as $purchase)
+                  
                     <tr>
-                      <td>{{$product->Productname->name}}</td>
-                      <td>{{$product->Productname->Category->name}}</td>
-                      <td>{{$product->quantity}}
-                        @if($product->Quantity->name == 'KG')
+                    <td>
+                        01
+                     </td>
+                      <td>{{$purchase->Productname->name}}</td>
+                      <td>{{$purchase->Productname->Category->name}}</td>
+                      <td>{{$purchase->quantity}}
+                        @if($purchase->Quantity->name == 'KG')
                         KG
-                        @elseif($product->Quantity->name == 'Liter')
+                        @elseif($purchase->Quantity->name == 'Liter')
                         Liter
-                        @elseif($product->Quantity->name == 'Piece')
+                        @elseif($purchase->Quantity->name == 'Piece')
                         Piece
                         @else
                         Other
                         @endif
                       </td>
-                      <td>{{$product->price}}</td>
-                      <td>{{number_format($product->price / $product->quantity,4)}}
+                      <td>{{$purchase->price}}</td>
+                      <td>{{number_format($purchase->price / $purchase->quantity,4)}}</td>
+                      <td>{{$purchase->created_at->format('d M Y, H:i:s')}}</td>
                       <td class="d-flex">
-                        <a href="{{route('product.edit', $product->id)}}" class="btn btn-sm btn-primary mr-1"><i class="fas fa-edit"></i></a>
-                        <form action="{{route('product.destroy', $product->id)}}" class="d-inline" method="POST">
-                        <input type="hidden" name="_method" value="DELETE">
+                        <!-- <form action="{{route('purchase.destroy', $purchase->id)}}" class="d-inline" method="POST">
+                        <input type="hidden" name="_method" value="DELETE"-->
                         <!-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> -->
                         @csrf
-                          <button type="submit" class="btn btn-sm btn-danger mr-1"><i class="fas fa-trash"></i></button>
-                        </form>
+                          <!--button type="submit" class="btn btn-sm btn-danger mr-1"><i class="fas fa-trash"></i></button>
+                        </form> -->
                       </td>
                     </tr>
                     @endforeach
@@ -102,7 +114,7 @@
                 </table>
               </div>
               <div class="ml-auto my-3 mr-4">
-                {{$products->links()}}
+                {{$purchases->links()}}
               </div>
               <!-- /.card-body -->
             </div> 
