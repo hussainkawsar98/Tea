@@ -12,10 +12,16 @@ class Sale extends Model
     protected $guarded = ['created_at', 'deleted_at', 'updated_at'];
 
     protected $fillable = [
+        'customer_name',
+        'product_id',
         'productname_id',
-        'quantity_id',
         'quantity',
+        'single_price',
         'price',
+        'add_cost',
+        'vat',
+        'tax',
+        'user_id'
     ];
 
     //__Join with Productname__//
@@ -33,8 +39,8 @@ class Sale extends Model
         return $this->belongsTo('App\Models\User', 'user_id', 'id'); 
     }
 
-    //__Join with Product__//
-    public function Sale(){
-        return $this->belongsTo('App\Models\Product', 'product_id', 'id'); 
+    //__Join with Product __//
+    public function product(){
+        return $this->belongsToMany('App\Models\Product', 'product_sale')->withTimestamps(); 
     }
 }

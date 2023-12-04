@@ -17,6 +17,9 @@ class Product extends Model
         'quantity_id',
         'quantity',
         'price',
+        'add_cost',
+        'tax',
+        'vat',
     ];
 
     //__Join with Productname__//
@@ -24,13 +27,13 @@ class Product extends Model
         return $this->belongsTo('App\Models\Productname', 'productname_id', 'id'); 
     }
 
-    //__Join with Quantity__//
+    //__Join with Quantity __//
      public function Quantity(){
         return $this->belongsTo('App\Models\Quantity', 'quantity_id', 'id'); 
     }
 
-    //__Join with Product for Sale__//
-    public function ProductS(){
-        return $this->hasMany('App\Models\sale', 'product_id', 'id'); 
+    //__ Join With Sale __//
+    public function sale(){
+        return $this->belongsToMany('App\Models\Sale', 'product_sale')->withTimestamps();
     }
 }

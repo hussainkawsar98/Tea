@@ -17,6 +17,9 @@ class Purchase extends Model
         'quantity_id',
         'quantity',
         'price',
+        'add_cost',
+        'vat',
+        'tax',
     ];
 
     //__Join with Productname__//

@@ -41,14 +41,17 @@ dd($products);
                             <div class="card-primary">
                                 <!-- Errors List Show -->
                                 @include('layouts.errors')
-                                <form action="{{route('sale.store')}}" method="POST">
+                                <form action="{{route('sale.update')}}" method="POST">
                                     @csrf
+                                    @method('PUT')
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-6 form-group">
                                                 <label>Customer Name</label>
                                                 <input type="text" class="form-control"
                                                 name="customer_name">
+                                                <input type="text" class="form-control"
+                                                name="product_id" value="">
                                             </div>
                                             <div class="col-md-6 form-group">
                                                 <label>Product Name</label>

@@ -88,13 +88,15 @@
                         @csrf
                           <button type="submit" class="btn btn-sm btn-danger mr-1"><i class="fas fa-trash"></i></button>
                         </form>
+                        <a href="{{route('sale.edit', $product->id)}}" class="btn btn-sm btn-primary mr-1">Sale Now</a>
+                      </td>
                       </td>
                     </tr>
                     @endforeach
                     @else
                     <tr>
                       <td colspan="6">
-                        <h5 class="text-center text-danger">No Product Names Found.</h5>
+                        <h5 class="text-center text-danger">No Product Found.</h5>
                       </td>
                     </tr>
                     @endif

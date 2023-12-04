@@ -43,48 +43,64 @@ dd($products);
                                 @include('layouts.errors')
                                 <form action="{{route('sale.update', $product->id)}}" method="POST">
                                     @csrf
-                                     @method('PUT')
+                                    @method('PUT')
                                     <div class="card-body">
+                                        <!-- Hidden Field -->
+                                        <p class="form-control">{{$product->id}}</p>
+                                        <input type="text" name="productname_id" value="{{$product->productname_id}}" class="form-control">
+                                        <input type="text" name="quantity_id" value="{{$product->quantity_id}}" class="form-control">
+                                        <!-- Hidden Field -->
                                         <div class="row">
                                             <div class="col-md-6 form-group">
-                                                <label>Customer Name</label>
+                                                <label>Customer Name <span class="required">*</span></label>
                                                 <input type="text" class="form-control"
                                                 name="customer_name">
-                                                <input type="text" class="form-control"
-                                                name="product_id" value="">
                                             </div>
                                             <div class="col-md-6 form-group">
                                                 <label>Product Name</label>
-                                                <select name="product_id" id="" class="form-control selectpicker" data-live-search="true">
-                                                <option selected disabled>Choose Product</option>
-                                                @foreach($products as $product)
-                                                <option value="{{$product->id}}">{{$product->Productname->name}}</option>
-                                                @endforeach
-                                            </select>
+                                                <input type="text" class="form-control"
+                                                name="" value="{{$product->Productname->name}}" disabled>
+                                                <input type="text" class="form-control"
+                                                name="product_id" value="{{$product->id}}">
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-6 form-group">
-                                                <label>Quantity</label>
-                                                <input type="text" class="form-control"
+                                            <div class="col-md-4 form-group">
+                                                <label>Quantity<span class="required">*</span></label>
+                                                <input type="text" inputmode="decimal" class="form-control"
                                                 name="quantity">
                                             </div>
-                                            <div class="col-md-6 form-group">
+                                            <div class="col-md-4 form-group">
+                                                <label>Total Stock</label>
+                                                <p class="form-control">
+                                                {{$product->quantity}}</p>
+                                            </div>
+                                            <div class="col-md-4 form-group">
                                                 <label>Per KG Price</label>
-                                                <input type="text" class="form-control"
-                                                name="single_price">
+                                                <input type="text" inputmode="decimal" class="form-control"
+                                                name="single_price" value="{{number_format($product->price / $product->quantity,2)}}">
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-6 form-group">
+                                            <div class="col-md-4 form-group">
+                                                <label>Additional Cost </label>
+                                                <input type="text" inputmode="decimal" class="form-control"
+                                                value="" name="add_cost">
+                                            </div>
+                                            <div class="col-md-4 form-group">
                                                 <label>Vat</label>
-                                                <input type="text" class="form-control"
+                                                <input type="text" inputmode="decimal" class="form-control"
                                                 name="vat">
                                             </div>
-                                            <div class="col-md-6 form-group">
+                                            <div class="col-md-4 form-group">
                                                 <label>Tax</label>
-                                                <input type="text" class="form-control"
+                                                <input type="text" inputmode="decimal" class="form-control"
                                                 name="tax">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 form-group">
+                                                <h5 class="ml-auto my-2 text-primary">Total Price: 3245</h5>
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Sale Now</button>
@@ -100,13 +116,3 @@ dd($products);
 </div>
 <!-- /.content-wrapper -->
 @endsection
-
-
-
-
-<select name="product_id" id="" class="form-control selectpicker" data-live-search="true">
-                                                    <option selected disabled>Choose Product</option>
-                                                    @foreach($products as $product)
-                                                    <option value="{{$product->id}}">{{$product->Productname->name}}</option>
-                                                    @endforeach
-                                                </select>

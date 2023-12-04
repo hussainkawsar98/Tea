@@ -93,7 +93,7 @@
                             <a href="#" class="nav-link {{Request::routeIs('product.index') || Request::routeIs('product.create') ? 'active' : '' }}">
                                 <i class="nav-icon far fa-file-alt"></i>
                                 <p>
-                                    Product
+                                    Stock
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -101,7 +101,7 @@
                                 <li class="nav-item">
                                     <a href="{{route('product.index')}}" class="nav-link {{ Request::routeIs('product.create') ? 'active' : '' }}">
                                     <i class="far fa-circle nav-icon pe-2 pr-2"></i>
-                                        <p> Products</p>
+                                        <p> Stock</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -116,7 +116,7 @@
                         
                         <!-- Start DropDown Menu -->
                         <li class="nav-item">
-                            <a href="#" class="nav-link {{Request::routeIs('category.index') || Request::routeIs('category.create') ? 'active' : '' }}">
+                            <a href="#" class="nav-link {{Request::routeIs('sale.index') || Request::routeIs('sale.create') ? 'active' : '' }}">
                                 <i class="nav-icon far fa-file-alt"></i>
                                 <p>
                                     Sales
@@ -125,13 +125,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{route('category.index')}}" class="nav-link {{ Request::routeIs('category.create') ? 'active' : '' }}">
+                                    <a href="{{route('sale.index')}}" class="nav-link {{ Request::routeIs('sale.inbox') ? 'active' : '' }}">
                                     <i class="far fa-circle nav-icon pe-2 pr-2"></i>
                                         <p> Sales</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('category.create')}}" class="nav-link {{ Request::routeIs('category.create') ? 'active' : '' }}">
+                                    <a href="{{route('sale.create')}}" class="nav-link {{ Request::routeIs('sale.create') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon pe-2 pr-2"></i>
                                         <p>Sale Single</p>
                                     </a>

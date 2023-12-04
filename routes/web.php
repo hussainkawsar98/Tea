@@ -42,6 +42,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::resource('/product-name', ProductNameController::class);
     Route::resource('/quantity', QuantityController::class);
     Route::resource('/product', ProductController::class);
+    // Route::GET('sale/{sale}/edit', [SaleController::class, 'edit'])->name('sale.edit');
+    // Route::PUT('sale/{sale}', [SaleController::class, 'update'])->name('sale.update');
     Route::resource('/purchase', PurchaseController::class);
     // Route::get('/purchase/search', [PurchaseController::class, 'search'])->name('purchase.search');
     // Route::get('/purchase/filter', [PurchaseController::class, 'filter'])->name('purchase.filter');

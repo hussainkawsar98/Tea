@@ -116,3 +116,11 @@ input::-webkit-calendar-picker-indicator {
     color: black;
     opacity: 1;
 }
+
+.form-control:disabled, .form-control[readonly] {
+    background-color: #007bff2b;
+    border: 1px solid #007bff;
+}
+.required {
+    color: red;
+}
